@@ -8,7 +8,7 @@
 
 #User
 User.create(name: "Lucas", email: "lucas@mail.com", password: '1234567')
-User.create(name: "May", email: "May", password:'90313ddidcn')
+User.create(name: "May", email: "may@gmail.com", password:'90313ddidcn')
 
 #Food
 Food.create(name: "Queijo", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 1)
