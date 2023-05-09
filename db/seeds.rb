@@ -11,15 +11,52 @@ User.create(name: "Lucas", email: "lucas@mail.com", password: '1234567')
 User.create(name: "May", email: "may@gmail.com", password:'90313ddidcn')
 
 #Food
-Food.create(name: "Queijo", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 1)
-Food.create(name: "Carne de Sol", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 1)
-Food.create(name: "Picanha", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 1)
-Food.create(name: "Doce de Leite", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 1)
-Food.create(name: "Goiabada", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 1)
-Food.create(name: "Bananada", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 1)
-Food.create(name: "Cachaca", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 2)
-Food.create(name: "Vinho", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 2)
-Food.create(name: "Cerveja Artesanal", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 2)
-Food.create(name: "Queijo", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 2)
-Food.create(name: "Queijo", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 2)
-Food.create(name: "Queijo", price: 5.00, category: 'salgados', description:'Um queijo muito gostoso', user_id: 2)
+
+Food.create(
+  name: "Queijo Qualho",
+  price: 10.00,
+  category: 'salgados',
+  description:'Um queijo magro!',
+  user_id: 1,
+  image_url: "https://img.cybercook.com.br/receitas/774/queijo-coalho-nordestino-2.jpeg"
+)
+
+Food.create(
+  name: "Queijo Gorgonzola",
+  price: 25.00,
+  category: 'salgados',
+  description:'Sabor mais intenso e diferente',
+  user_id: 2
+)
+
+Food.create(
+  name: "Canjiquinha",
+  price: 13.00,
+  category: 'doces',
+  description:'Feito com milho',
+  user_id: 1
+)
+
+Food.create(
+  name: "Pé de Moleque",
+  price: 13.00,
+  category: 'doces',
+  description:'Um doce regional',
+  user_id: 1
+)
+
+Food.create(
+  name: "Cachaça Matuta",
+  price: 12.00,
+  category: 'bebidas',
+  description:'Cachaça direto do Alabique',
+  user_id: 1
+)
+
+Food.create(
+  name: "Licor de Menta",
+  price: 38.00,
+  category: 'bebidas',
+  description:'Um delicioso licor!',
+  user_id: 1
+)
