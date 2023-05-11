@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-  before_action :set_food, only: [:show]
+  before_action :set_food, only: %i[show edit destroy update]
 
   def index
     @foods = Food.all
@@ -7,9 +7,21 @@ class FoodsController < ApplicationController
 
   def show; end
 
+  def new
+    @food = Food.new
+  end
+
+  def edit; end
+
+  def update
+    @food.update(food_params)
+    redirect_to food_path(@food)
+  end
+
+
   def create
     @food = Food.new(food_params)
-    @food.user_id = 3
+    @food.user_id = current_user.id
     if @food.save
       redirect_to food_path(@food)
     else
@@ -17,9 +29,12 @@ class FoodsController < ApplicationController
     end
   end
 
-  def new
-    @food = Food.new
+
+  def destroy
+    @food.destroy
+    redirect_to foods_path, status: :see_other
   end
+
 
   private
 
