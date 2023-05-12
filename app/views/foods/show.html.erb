@@ -1,4 +1,11 @@
 <div class="container">
   <h1><%= @food.name %></h1>
+  <h2>Grupo de <%= @food.category %></h2>
+  <h2><%= number_to_currency(@food.price, unit: "R$", separator: ",") %></h2>
+    <%= image_tag (@food.image_url||''), alt: @food.name, style: 'width:40vw'%>
   <p> <%= @food.description %></p>
+
+
+  <%= link_to "Editar Comida", edit_food_path(@food) %>
+  <%= link_to "Deletar Produto", food_path(@food), data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o produto?" } %>
 </div>
