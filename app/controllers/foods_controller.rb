@@ -1,5 +1,9 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.all
+    if params[:category]
+      @foods = Food.where(category: params[:category])
+    else
+      @foods = Food.all
+    end
   end
 end
