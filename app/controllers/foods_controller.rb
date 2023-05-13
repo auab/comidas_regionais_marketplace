@@ -2,7 +2,11 @@ class FoodsController < ApplicationController
   before_action :set_food, only: %i[show edit destroy update]
 
   def index
-    @foods = Food.all
+    if params[:category]
+      @foods = Food.where(category: params[:category])
+    else
+      @foods = Food.all
+    end
   end
 
   def show; end

@@ -1,4 +1,29 @@
-<div class="container">
-  <h1>Comidas Regionais 🍮</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
-<div class="container">
+<div class="banner" >
+  <div class="container">
+    <h1>Bem-vindo ao melhor <strong>Marketplace</strong> de comidas Brasileiras!</h1>
+    <a class="btn btn-gradient" href="#">Delicie-se!</a>
+  </div>
+</div>
+
+<div class="container mt-5">
+ <h2> Escolha por cartegoria</h2>
+  <div class="cards">
+    <%= link_to foods_path(category:"salgados"), class: "navbar-brand" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/1284226368/pt/foto/brazilian-feijoada-food-top-view.jpg?s=612x612&w=0&k=20&c=hYaTWjQt_qWytpkTk-GMAABsZJB05XN8JpIwgFo34k8=)">
+        Salgados
+      </div>
+    <% end %>
+
+    <%= link_to foods_path(category:"doces"), class: "navbar-brand" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://docepedia.com/wp-content/uploads/2022/07/em-clima-de-festa-g.jpg)">
+        Doces
+      </div>
+    <% end %>
+
+    <%= link_to foods_path(category:"bebidas"), class: "navbar-brand" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://st3.depositphotos.com/4366637/12716/i/450/depositphotos_127164444-stock-photo-lemon-fruit-caipirinha-of-brazil.jpg)">
+        Bebidas
+      </div>
+    <% end %>
+  </div>
+</div>
