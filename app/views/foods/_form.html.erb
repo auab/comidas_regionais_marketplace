@@ -1,10 +1,17 @@
 <%= simple_form_for(food) do |f| %>
-  <%= f.input :name  %>
-  <%= f.input :category, :collection => %w[salgados doces bebidas] %>
-  <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.input :image_url %>
+  <%= f.input :name  ,label:  "Nome"%>
+  <%= f.input :category, :collection => %w[salgados doces bebidas],label:  "Categoria" %>
+  <%= f.input :price,label:  "Preço" %>
+  <%= f.input :description,label:  "Descrição" %>
+  <%= f.input :image_url ,label:  "Url da Imagem" %>
   <div class='form-submit mt-5'>
-    <%= f.submit :class => 'btn btn-gradient'%>
+  <% if  request.fullpath.split('/')[-1] == 'edit'%>
+    <%= f.submit 'Editar Produto' ,:class => 'btn btn-gradient mb-3'%>
+  <% else %>
+    <%= f.submit 'Criar Produto' ,:class => 'btn btn-gradient mb-3'%>
+  <% end %>
+
   </div>
+
+
 <% end %>

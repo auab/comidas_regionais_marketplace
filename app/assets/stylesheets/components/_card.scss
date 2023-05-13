@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
@@ -97,4 +97,20 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+
+.img-hover-zoom {
+ // height: 300px; /* [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover {
+  transform: scale(1.05);
 }
