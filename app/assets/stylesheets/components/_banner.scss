@@ -5,6 +5,11 @@
   padding: 150px 0;
 }
 
+.banner-text{
+  position: relative;
+  top: 90px;
+}
+
 .banner h1 {
   margin: 0;
   color: white;
@@ -17,5 +22,5 @@
   font-size: 20px;
   color: white;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px #00000033;
 }

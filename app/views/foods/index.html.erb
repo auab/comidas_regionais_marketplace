@@ -1,3 +1,23 @@
+<div class="cards">
+
+
 <% @foods.each do |food| %>
-  <%= link_to food.name, food_path(food.id), style: "text-decoration: none" %>
+
+<div class="card-trip mb-5 ">
+  <%= image_tag (food.image_url||''), alt: food.name%>
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= food.name %></h2>
+      <p> <%= food.description %> </p>
+      <%= link_to 'Detalhes', food_path(food.id), class:'btn btn-gradient' %>
+
+
+    </div>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <h2 class="card-trip-pricing"><%= number_to_currency(food.price, unit: "R$ ", separator: ",") %></h2>
+  </div>
+</div>
+
 <% end %>
+
+</div>
