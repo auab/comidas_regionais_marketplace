@@ -1,10 +1,5 @@
-<%= simple_form_for(@food) do |f| %>
-  <%= f.input :name  %>
-  <%= f.input :category, :collection => %w[salgados doces bebidas] %>
-  <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.input :image_url %>
-  <div class='form-submit mt-5'>
-    <%= f.submit :class => 'btn-create-food'%>
-  </div>
-<% end %>
+<div class='container mt-3'>
+<h1>Novo Produto</h1>
+<hr>
+<%= render "form", food: @food %>
+</div>

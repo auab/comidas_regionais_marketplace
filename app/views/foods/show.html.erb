@@ -1,6 +1,8 @@
+ <% img = 'https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg' %>
+
 <h1 class='mt-3 mb-3'>Detalhes do Produto</h1>
 <div class="card-trip">
-  <%= image_tag (@food.image_url||''), alt: @food.name%>
+  <%= image_tag (@food.image_url||img), alt: @food.name%>
   <div class="card-trip-infos">
     <div>
       <h2><%= @food.name %></h2>
