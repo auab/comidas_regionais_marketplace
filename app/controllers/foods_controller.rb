@@ -16,7 +16,8 @@ class FoodsController < ApplicationController
     @food = Food.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     @food.update(food_params)

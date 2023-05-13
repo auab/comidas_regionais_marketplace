@@ -27,7 +27,8 @@ Food.create!(
   price: 25.00,
   category: 'salgados',
   description:'Sabor mais intenso e diferente',
-  user: may
+  user: may,
+  image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/A_Gongonzola_from_Baci.jpg/1200px-A_Gongonzola_from_Baci.jpg'
 )
 
 Food.create!(
@@ -51,7 +52,8 @@ Food.create!(
   price: 12.00,
   category: 'bebidas',
   description:'Cachaça direto do Alabique',
-  user: lucas
+  user: lucas,
+  image_url: 'https://naruatem.com/wp-content/uploads/2021/06/matuta.png'
 )
 
 Food.create!(
@@ -59,5 +61,6 @@ Food.create!(
   price: 38.00,
   category: 'bebidas',
   description:'Um delicioso licor!',
-  user: may
+  user: may,
+  image_url: 'https://www.receiteria.com.br/wp-content/uploads/como-fazer-licor-de-menta-1.jpg'
 )

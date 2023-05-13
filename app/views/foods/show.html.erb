@@ -18,4 +18,8 @@
     <h2 class="card-trip-pricing"><%= number_to_currency(@food.price, unit: "R$ ", separator: ",") %></h2>
   </div>
 </div>
- <%= link_to "Voltar", url_for(:back), class:'btn btn-gradient mt-3' %>
+<% if  url_for(:back).split('/')[-1] == 'edit'%>
+  <%= link_to "Voltar", foods_path, class:'btn btn-gradient my-3' %>
+<% else %>
+ <%= link_to "Voltar", url_for(:back), class:'btn btn-gradient my-3' %>
+<% end %>
