@@ -6,7 +6,11 @@
 <% @foods.each do |food| %>
 
 <div class="card-trip mb-5 ">
-  <%= image_tag (food.image_url||img), alt: food.name%>
+  <% if  food.photo.attached?%>
+    <%= cl_image_tag food.photo.key%>
+  <% else %>
+    <%= image_tag (img)%>
+  <% end %>
   <div class="card-trip-infos">
     <div>
       <h2><%= food.name %></h2>

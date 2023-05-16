@@ -3,7 +3,7 @@
   <%= f.input :category, :collection => %w[salgados doces bebidas],label:  "Categoria" %>
   <%= f.input :price,label:  "Preço" %>
   <%= f.input :description,label:  "Descrição" %>
-  <%= f.input :image_url ,label:  "Url da Imagem" %>
+  <%= f.input :photo, as: :file, label: "Foto do Produto" %>
   <div class='form-submit mt-5'>
   <% if  request.fullpath.split('/')[-1] == 'edit'%>
     <%= f.submit 'Editar Produto' ,:class => 'btn btn-gradient mb-3'%>
