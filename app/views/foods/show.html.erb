@@ -18,6 +18,9 @@
       <%= link_to food_path(@food), class: "navbar-brand", data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o produto?" } do %>
         <i class="fa-solid fa-trash" style="color: #d23333;"></i>
       <% end %>
+      <%= link_to food_orders_path(@food), class: "navbar-brand", data: { turbo_method: :post, turbo_confirm: "Você tem certeza que quer fazer esse pedido?" } do %>
+        <i class="fa-solid fa-cart-shopping" style="color: #d23333;"></i>
+      <% end %>
     </div>
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     <h2 class="card-trip-pricing"><%= number_to_currency(@food.price, unit: "R$ ", separator: ",") %></h2>
