@@ -1,5 +1,6 @@
 <% food=Food.find(@order.food_id) %>
 <% seller=User.find(food.user_id) %>
+ <% img = 'https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg' %>
 <div class="container my-5">
   <div class="card-product">
         <% if  food.photo.attached?%>
