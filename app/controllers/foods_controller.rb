@@ -7,6 +7,8 @@ class FoodsController < ApplicationController
       @foods = Food.where(category: params[:category])
     elsif params[:query]
       @foods = Food.search_by_name_and_description_and_category(params[:query])
+    elsif params[:user_id]
+      @foods = Food.where(user_id: params[:user_id])
     else
       @foods = Food.all
     end

@@ -1,27 +1,26 @@
-<div class="container">
-  <div class="container-order-btn mt-5">
-  <div>
-    <h1>Pedido <%= @order.id %></h1>
-      <% food=Food.find(@order.food_id) %>
-      <% seller=User.find(food.user_id) %>
-        <h3> Total: <%= number_to_currency( Food.find(@order.food_id).price, unit: "R$ ", separator: ",") %> </h3>
-        <p><strong> Descrição do Produto: <%= food.description %></strong></p>
-         <p> Vendedor: <%= seller.name %></p>
-         <%= link_to "Ver mais produtos de:#{seller.name}", root_path, class: "" %>
-         <div>
-          <%= link_to "Fazer outro pedido", root_path, class: "btn btn-gradient my-3" %>
+<% food=Food.find(@order.food_id) %>
+<% seller=User.find(food.user_id) %>
+<div class="container my-5">
+  <div class="card-product">
+        <% if  food.photo.attached?%>
+          <%= cl_image_tag food.photo.key%>
+        <% else %>
+          <%= image_tag (img)%>
+        <% end %>
+    <div class="card-product-infos">
+      <div class='card-product-details'>
+        <h2><%= food.name %></h2>
+        <p><%= number_to_currency( Food.find(@order.food_id).price, unit: "R$ ", separator: ",") %> </p>
+        <p> <strong><%= food.description %></strong> </p>
       </div>
-          <%= link_to order_path(@order), class: "navbar-brand", data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o pedido produto?" } do %>
-            <i class="fa-solid fa-trash" style="color: #d23333;"></i>
-          <% end %>
-  </div>
-  <div class="container-order-img">
-      <% if  food.photo.attached?%>
-        <%= cl_image_tag food.photo.key%>
-      <% else %>
-        <%= image_tag (img)%>
-      <% end %>
+    <div class='card-seller-details'>
+      <p class='mb-3'> Vendedor: <strong><%= seller.name %></strong> </p>
+      <%= link_to "Ver mais produtos de #{seller.name}", foods_path(user_id:"#{seller.id}"), class: "seller-index-link" %>
+    </div>
     </div>
   </div>
-  <hr>
+  <div class='container-order-buttons'>
+   <%= link_to "Fazer outro pedido", foods_path, class: "btn btn-gradient my-3" %>
+   <%= link_to "Excluir pedido ", order_path(@order),data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o pedido produto?" }, class: "btn btn-gradient my-3" %>
+  </div>
 </div>
