@@ -4,8 +4,13 @@
   <%= link_to order_path(order), class: "navbar-brand", data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o pedido produto?" } do %>
     <i class="fa-solid fa-trash" style="color: #d23333;"></i>
   <% end %>
-  <p>pediu um(a) <%= Food.find(order.food_id).name %></p>
-  <p> de <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
+  <div class="container-order-btn">
+    <div>
+      <p>pediu um(a) <%= Food.find(order.food_id).name %></p>
+      <p> de <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
+    </div>
+      <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-3' %>
+  </div>
   <hr>
   <% end %>
 </div>
