@@ -1,6 +1,19 @@
+<div class="row justify-content-right">
+  <div class="col-sm-4 my-4">
+    <%= form_with url: foods_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Digite sua comida"
+        %>
+      <%= submit_tag "Pesquisar", name: "", class: "btn btn-gradient ms-1" %>
+    <% end %>
+  </div>
+</div>
+
  <% img = 'https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg' %>
 <h1 class='mt-3 mb-3'><%= @category.capitalize if @category %>
-     <%= 'Comidas Brasileias' unless @category %></h1>
+     <%= 'Comidas Brasileiras' unless @category %></h1>
 <div class="cards">
 
 <% @foods.each do |food| %>
@@ -19,7 +32,11 @@
 
 
     </div>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <% if food.user.photo.attached? %>
+      <%= cl_image_tag food.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, radius: 'max',class: "card-trip-user avatar-bordered"%>
+    <% else %>
+      <%= image_tag "no-photo-user.jpg", class: "card-trip-user avatar-bordered"%>
+    <% end %>
     <h2 class="card-trip-pricing"><%= number_to_currency(food.price, unit: "R$ ", separator: ",") %></h2>
   </div>
 </div>
