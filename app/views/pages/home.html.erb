@@ -7,7 +7,7 @@
 
 <div class="container my-5">
  <h2> Escolha por cartegoria</h2>
-  <div class="cards">
+  <div class="cards my-4">
     <%= link_to foods_path(category:"salgados"), class: "navbar-brand" do %>
       <div class="card-category img-hover-zoom" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/1284226368/pt/foto/brazilian-feijoada-food-top-view.jpg?s=612x612&w=0&k=20&c=hYaTWjQt_qWytpkTk-GMAABsZJB05XN8JpIwgFo34k8=)">
         <p>Salgados</p>
@@ -26,4 +26,33 @@
       </div>
     <% end %>
   </div>
+</div>
+
+
+<div class="container my-5">
+<hr class= 'my-5'>
+ <h2> Novidades</h2>
+ <div class="row my-4">
+
+ <%@foods.each do |food|%>
+ <div class="col-3 link-home-food">
+
+
+<%= link_to food_path(food) do %>
+<div class="card-product-home">
+<% img = 'https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg' %>
+  <% if  food.photo.attached?%>
+    <%= cl_image_tag food.photo.key%>
+  <% else %>
+    <%= image_tag (img)%>
+  <% end %>
+  <div class="card-product-home-infos">
+    <h2> <%= food.name %></h2>
+    <p> <%= number_to_currency(food.price, unit: "R$ ", separator: ",") %></p>
+  </div>
+</div>
+<% end %>
+</div>
+ <% end %>
+ </div>
 </div>
