@@ -22,7 +22,11 @@
         <i class="fa-solid fa-cart-shopping" style="color: #d23333;"></i>
       <% end %>
     </div>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <% if @food.user.photo.attached? %>
+      <%= cl_image_tag @food.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, radius: 'max',class: "card-trip-user avatar-bordered"%>
+    <% else %>
+      <%= image_tag "no-photo-user.jpg", class: "card-trip-user avatar-bordered"%>
+    <% end %>
     <h2 class="card-trip-pricing"><%= number_to_currency(@food.price, unit: "R$ ", separator: ",") %></h2>
   </div>
 </div>

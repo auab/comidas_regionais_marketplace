@@ -1,4 +1,6 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class='my-3'>
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -10,26 +12,25 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+    <%= f.input :password, label:  "Senha",
+                hint: "Deixe em branco caso você não queira alterar.",
                 required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+                input_html: { autocomplete: "Nova senha" } %>
+    <%= f.input :password_confirmation, label:  "Confirme a senha",
                 required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                input_html: { autocomplete: "Nova senha" } %>
+    <%= f.input :current_password, label:  "Senha atual",
+                hint: "Você precisa da sua senha atual para confirmar a alteração.",
                 required: true,
-                input_html: { autocomplete: "current-password" } %>
+                input_html: { autocomplete: "Senha atual" } %>
+    <%= f.input :photo, as: :file, label: "Foto de Perfil" %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Atualizar", class:'btn btn-gradient' %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<%= link_to "Voltar", :back, class:'btn btn-gradient mt-2' %>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+<div class='my-3' > <%= link_to "Cancelar a minha conta", registration_path(resource_name), data: { confirm: "Você tem certeza?", turbo_confirm: "Você tem certeza?" }, method: :delete %></div>
