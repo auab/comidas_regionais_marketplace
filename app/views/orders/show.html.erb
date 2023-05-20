@@ -13,15 +13,32 @@
         <h2><%= food.name %></h2>
         <p><%= number_to_currency( Food.find(@order.food_id).price, unit: "R$ ", separator: ",") %> </p>
         <p> <strong><%= food.description %></strong> </p>
+        <p>Status do pedido</p>
+        <% if @order.status_pedido== 'Cancelado' %>
+        <div class='status-cancelado'><p ><i class="fa-solid fa-circle fa-2xs"></i> <%=@order.status_pedido %></p> </div>
+        <% end %>
+        <% if @order.status_pedido== 'Em processamento' %>
+        <div class='status-processamento'><p ><i class="fa-solid fa-circle fa-2xs"></i> <%= @order.status_pedido %></p> </div>
+        <% end %>
+        <% if @order.status_pedido== 'Finalizado' %>
+        <div class='status-finalizado'><p ><i class="fa-solid fa-circle fa-2xs"></i> <%=@order.status_pedido %></p> </div>
+        <% end %>
+
+        <% if @order.status_pedido == 'Em processamento' && @order.user == current_user %>
+          <%= link_to "Cancelar pedido",order_path(@order, update: 'cancelar') ,data: { turbo_method: :patch, turbo_confirm: "Você tem certeza que quer cancelar o pedido?"}, class: "seller-index-link" %>
+          <%= link_to "Confirmar recebimento do pedido",order_path(@order, update: 'confirmar'),data: { turbo_method: :patch, turbo_confirm: "Você tem certeza que quer confirmar o recemibento do produto?"}, class: "seller-index-link" %>
+        <% end %>
+
       </div>
-    <div class='card-seller-details'>
-      <p class='mb-3'> Vendedor: <strong><%= seller.name %></strong> </p>
-      <%= link_to "Ver mais produtos de #{seller.name}", foods_path(user_id:"#{seller.id}"), class: "seller-index-link" %>
-    </div>
+      <% if @order.user == current_user %>
+      <div class='card-seller-details'>
+        <p class='mb-3'> Vendedor: <strong><%= seller.name %></strong> </p>
+        <%= link_to "Ver mais produtos de #{seller.name}", foods_path(user_id:"#{seller.id}"), class: "seller-index-link" %>
+      </div>
+      <% end %>
     </div>
   </div>
   <div class='container-order-buttons'>
    <%= link_to "Fazer outro pedido", foods_path, class: "btn btn-gradient my-3" %>
-   <%= link_to "Excluir pedido ", order_path(@order),data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o pedido produto?" }, class: "btn btn-gradient my-3" %>
   </div>
 </div>

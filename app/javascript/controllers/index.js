@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import ChagneOrderStatusController from "./chagne_order_status_controller"
+application.register("chagne-order-status", ChagneOrderStatusController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

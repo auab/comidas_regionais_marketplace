@@ -7,8 +7,7 @@
       <p>Valor: <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
     </div>
     <div class='container-order-index-buttons'>
-      <%= link_to "Excluir pedido ", order_path(order),data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o pedido produto?" }, class: "btn btn-gradient my-3" %>
-      <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-2' %>
+     <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-2' %>
     </div>
   </div>
   <hr>
