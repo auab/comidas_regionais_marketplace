@@ -8,7 +8,7 @@
 require "open-uri"
 
 
-
+Order.destroy_all
 Food.destroy_all
 User.destroy_all
 #User
@@ -79,4 +79,3 @@ food = Food.new(
 )
 food.photo.attach(io: file, filename: "queijo_gorgonzola.png", content_type: "image/png")
 food.save
-
