@@ -15,3 +15,18 @@
 .btn:active {
   color: white !important;
 }
+
+.btn-navbar {
+  color: #d23333;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-navbar:hover {
+  background: white;
+  opacity: 0.9;
+  color: #d23333;
+}

@@ -1,15 +1,69 @@
 <div class="container mt-3">
-  <% @orders.each do |order|%>
-  <div class="container-order-btn">
-    <div>
-      <h2>Pedido <%= order.id %></h2>
-      <p><%= Food.find(order.food_id).name %></p>
-      <p>Valor: <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
-    </div>
-    <div class='container-order-index-buttons'>
-     <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-2' %>
-    </div>
-  </div>
-  <hr>
+  <% if @user_type == "comprador" %>
+    <h2 class="mb-4">Minhas compras</h2>
+    <% if @orders.blank? %>
+      <%="Você não tem compras ainda."%>
+    <% else %>
+      <% @orders.each do |order|%>
+      <div class="container-order-btn">
+        <div>
+          <h2>Pedido #135<%= order.id %></h2>
+          <p><%= Food.find(order.food_id).name %></p>
+          <p>Valor: <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
+        </div>
+        <div class='container-order-index-buttons'>
+          <%= link_to "Cancelar compra ", order_path(order),data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer cancelar a compra?" }, class: "btn btn-gradient my-3" %>
+          <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-2' %>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+    <% end %>
   <% end %>
+
+    <% if @user_type == "vendedor" %>
+      <h2 class="mb-4">Minhas vendas</h2>
+      <% if @orders.blank? %>
+        <%="Você não tem vendas ainda."%>
+      <% else %>
+      <div class="cards mb-5">
+          <div class="card-product-home">
+            <i class="fa-solid fa-receipt"></i>
+            <div class="card-product-home-infos">
+              <h2 class="order-detail-header"> <%= "Total de vendas" %></h2>
+              <p class="order-detail-text"><%= @order_count %></p>
+            </div>
+          </div>
+          <div class="card-product-home">
+            <i class="fa-solid fa-sack-dollar"></i>
+            <div class="card-product-home-infos">
+              <h2 class="order-detail-header"> <%= "Valor total das vendas" %></h2>
+              <p class="order-detail-text"> <%= number_to_currency(@sum, unit: "R$ ", separator: ",") %></p>
+            </div>
+          </div>
+          <div class="card-product-home">
+            <i class="fa-solid fa-coins"></i>
+            <div class="card-product-home-infos">
+              <h2 class="order-detail-header"> <%= "Ticket médio" %></h2>
+              <p class="order-detail-text"> <%= number_to_currency(@ticket_medio, unit: "R$ ", separator: ",") %></p>
+            </div>
+          </div>
+      </div>
+        <% @orders.each do |order|%>
+        <div class="container-order-btn">
+          <div>
+            <h2>Venda #135<%= order.id %></h2>
+            <p><%= Food.find(order.food_id).name %></p>
+            <p>Valor: <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
+          </div>
+          <div class='container-order-index-buttons'>
+            <%= link_to "Cancelar venda ", order_path(order),data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer a venda?" }, class: "btn btn-gradient my-3" %>
+            <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-2' %>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    <% end %>
+  <% end %>
+
 </div>

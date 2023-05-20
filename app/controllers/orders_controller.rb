@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @order.food = @food
     @order.status_pedido = 'Em processamento'
     @order.save
-    redirect_to foods_path #TODO: verificar como direcionar para order do usuario
+    redirect_to order_path(@order)
   end
 
   def show
@@ -33,10 +33,22 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
-    redirect_to orders_path #TODO: verificar como direcionar para order do usuario
+    redirect_to orders_path(user_type: "comprador")
   end
 
   def index
-    @orders = Order.where(user_id: current_user)
+    @user_type = params[:user_type]
+    if @user_type == "comprador"
+      @orders = Order.where(user: current_user)
+    end
+    if @user_type == "vendedor"
+      @orders = Order.where(food: Food.where(user_id:current_user.id))
+      @order_count = @orders.count
+      @sum = 0
+      @orders.each do |order|
+        @sum += order.food.price
+      end
+      @ticket_medio = @sum / @order_count
+    end
   end
 end
