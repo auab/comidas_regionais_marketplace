@@ -12,14 +12,18 @@
     <div>
       <h2><%= @food.name %></h2>
       <p> <%= @food.description %> </p>
-      <%= link_to edit_food_path(@food), class: "navbar-brand" do %>
-        <i class="fa-solid fa-pen-to-square" style="color: #d23333;"></i>
-      <% end %>
-      <%= link_to food_path(@food), class: "navbar-brand", data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o produto?" } do %>
-        <i class="fa-solid fa-trash" style="color: #d23333;"></i>
-      <% end %>
-      <%= link_to food_orders_path(@food), class: "navbar-brand", data: { turbo_method: :post, turbo_confirm: "Você tem certeza que quer fazer esse pedido?" } do %>
-        <i class="fa-solid fa-cart-shopping" style="color: #d23333;"></i>
+
+      <% if current_user.id == @food.user_id %>
+        <%= link_to edit_food_path(@food), class: "navbar-brand" do %>
+          <i class="fa-solid fa-pen-to-square" style="color: #d23333;"></i>
+        <% end %>
+        <%= link_to food_path(@food), class: "navbar-brand", data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o produto?" } do %>
+          <i class="fa-solid fa-trash" style="color: #d23333;"></i>
+        <% end %>
+      <% else %>
+        <%= link_to food_orders_path(@food), class: "navbar-brand", data: { turbo_method: :post, turbo_confirm: "Você tem certeza que quer fazer esse pedido?" } do %>
+          <i class="fa-solid fa-cart-shopping" style="color: #d23333;"></i>
+        <% end %>
       <% end %>
     </div>
     <% if @food.user.photo.attached? %>

@@ -1,15 +1,15 @@
 <div class="container mt-3">
   <% @orders.each do |order|%>
-  <h2>Pedido <%= order.id %></h2>
-  <%= link_to order_path(order), class: "navbar-brand", data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o pedido produto?" } do %>
-    <i class="fa-solid fa-trash" style="color: #d23333;"></i>
-  <% end %>
   <div class="container-order-btn">
     <div>
-      <p>pediu um(a) <%= Food.find(order.food_id).name %></p>
-      <p> de <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
+      <h2>Pedido <%= order.id %></h2>
+      <p><%= Food.find(order.food_id).name %></p>
+      <p>Valor: <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
     </div>
-      <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-3' %>
+    <div class='container-order-index-buttons'>
+      <%= link_to "Excluir pedido ", order_path(order),data: { turbo_method: :delete, turbo_confirm: "Você tem certeza que quer deletar o pedido produto?" }, class: "btn btn-gradient my-3" %>
+      <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-2' %>
+    </div>
   </div>
   <hr>
   <% end %>
