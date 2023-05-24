@@ -10,6 +10,16 @@
           <h2>Pedido #135<%= order.id %></h2>
           <p><%= Food.find(order.food_id).name %></p>
           <p>Valor: <%= number_to_currency( Food.find(order.food_id).price, unit: "R$ ", separator: ",") %> </p>
+        <!--order status-->
+        <% if order.status_pedido== 'Cancelado' %>
+        <div class='order-index-card__status--cancelado'><p ><i class="fa-solid fa-circle fa-2xs"></i> <%=order.status_pedido %></p> </div>
+        <% end %>
+        <% if order.status_pedido== 'Em processamento' %>
+        <div class='order-index-card__status--processamento'><p ><i class="fa-solid fa-circle fa-2xs"></i> <%= order.status_pedido %></p> </div>
+        <% end %>
+        <% if order.status_pedido== 'Finalizado' %>
+        <div class='order-index-card__status--finalizado'><p ><i class="fa-solid fa-circle fa-2xs"></i> <%=order.status_pedido %></p> </div>
+        <% end %>
         </div>
         <div class='container-order-index-buttons'>
            <%= link_to "Detalhes", order_path(order), class:'btn btn-gradient my-2' %>

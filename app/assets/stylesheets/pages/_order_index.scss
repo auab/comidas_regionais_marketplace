@@ -2,9 +2,39 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
+  p{
+    font-size: 12px;
+  }
 }
 
 .container-order-index-buttons{
   display: flex;
   flex-direction: column;
+}
+
+.order-index-card__status--cancelado{
+  border: 1px solid red;
+  text-align: center;
+  border-radius: 10px;
+  color: red;
+  width: 100px;
+  height: 20px;
+}
+
+.order-index-card__status--processamento{
+  border: 1px solid rgb(73, 73, 218);;
+  text-align: center;
+  border-radius: 10px;
+  color:rgb(73, 73, 218);
+  width: 150px;
+  height: 20px;
+}
+
+.order-index-card__status--finalizado{
+  border: 1px solid rgb(36, 160, 36);
+  text-align: center;
+  border-radius: 10px;
+  color: rgb(36, 160, 36);
+  width: 100px;
+  height: 20px;
 }
